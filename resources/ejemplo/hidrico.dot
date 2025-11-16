@@ -1,0 +1,13 @@
+graph {
+  label="Red Hídrica";
+  node [shape=circle];
+
+  Almagro -- Flores;
+  Belgrano -- Nunez;
+  Boedo -- Almagro;
+  Boedo -- Caballito;
+  Caballito -- Flores;
+  Palermo -- Recoleta;
+  Palermo -- Belgrano;
+  Recoleta -- Retiro;
+}

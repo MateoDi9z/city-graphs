@@ -3,19 +3,20 @@ Graph analysis module for Buenos Aires city networks.
 Students must implement all functions marked with TODO.
 """
 
-from src.output import (
-    format_componentes_conexos,
-    format_orden_fallos,
-    format_camino_minimo,
-    format_simulacion_corte,
-    format_ruta_recoleccion,
-    format_plantas_asignadas,
-    format_puentes_y_articulaciones,
-)
-
 # -----------------------------
 # Graph loading
 # -----------------------------
+from src.graphs.simple_graph import SimpleGraph
+from src.output import (
+    format_camino_minimo,
+    format_componentes_conexos,
+    format_orden_fallos,
+    format_plantas_asignadas,
+    format_puentes_y_articulaciones,
+    format_ruta_recoleccion,
+    format_simulacion_corte,
+)
+
 
 def load_graph(path):
     """
@@ -27,8 +28,22 @@ def load_graph(path):
     Returns:
         Adjacency dictionary {node: [neighbors]}
     """
-    # TODO: Implement
-    pass
+
+    graph = SimpleGraph(isDirected=True)
+
+    with open(path, "r") as file:
+        for line in file:
+            if not line or line[0] == "#":
+                continue
+
+            clean_line = line.strip()
+            if not clean_line:
+                continue
+
+            from_node, to_node = tuple(clean_line.split(" "))
+            graph.add_edge(from_node, to_node)
+
+    return graph.get_adjacency_dict()
 
 
 def load_weighted_graph(path):
@@ -41,8 +56,22 @@ def load_weighted_graph(path):
     Returns:
         Adjacency dictionary {node: [(neighbor, weight), ...]}
     """
-    # TODO: Implement
-    pass
+
+    graph = SimpleGraph(isDirected=True, weighted=True)
+
+    with open(path, "r") as file:
+        for line in file:
+            if not line or line[0] == "#":
+                continue
+
+            clean_line = line.strip()
+            if not clean_line:
+                continue
+
+            from_node, to_node, weight = tuple(clean_line.split(" "))
+            graph.add_edge(from_node, to_node, int(weight))
+
+    return graph.get_adjacency_dict()
 
 
 def process_queries(queries_file, output_file, electric_graph, road_graph, water_graph):
@@ -57,4 +86,4 @@ def process_queries(queries_file, output_file, electric_graph, road_graph, water
         water_graph: Water network graph
     """
     # TODO: Implement
-    pass
+    return dict()
