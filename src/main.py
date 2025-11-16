@@ -29,7 +29,7 @@ def load_graph(path):
         Adjacency dictionary {node: [neighbors]}
     """
 
-    graph = SimpleGraph(isDirected=True)
+    graph = SimpleGraph(isDirected=False)
 
     with open(path, "r") as file:
         for line in file:
@@ -57,7 +57,7 @@ def load_weighted_graph(path):
         Adjacency dictionary {node: [(neighbor, weight), ...]}
     """
 
-    graph = SimpleGraph(isDirected=True, weighted=True)
+    graph = SimpleGraph(isDirected=False, weighted=True)
 
     with open(path, "r") as file:
         for line in file:
