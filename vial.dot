@@ -1,0 +1,13 @@
+graph {
+  label="Red Vial";
+  node [shape=circle];
+
+  Almagro -- Boedo [label="4"];
+  Almagro -- Flores [label="5"];
+  Belgrano -- Palermo [label="7"];
+  Belgrano -- Nunez [label="4"];
+  Boedo -- Caballito [label="5"];
+  Caballito -- Flores [label="6"];
+  Palermo -- Recoleta [label="5"];
+  Recoleta -- Retiro [label="3"];
+}

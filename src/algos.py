@@ -108,3 +108,66 @@ def dijkstra(gw: dict, origen: str, destino: str, bloqueados: set | None = None)
     camino.append(origen)
     camino.reverse()
     return float(dist[destino]), camino
+
+
+# ---------------------------------------------------------
+# Tarjan – Puentes y puntos de articulación
+# ---------------------------------------------------------
+
+def tarjan(g: dict):
+    """
+    Detecta puentes y puntos de articulación en un grafo no dirigido.
+    Retorna: (lista_puentes, lista_articulaciones)
+    """
+
+    tiempo = 0
+    visitado = set()
+    disc = {}   # tiempo de descubrimiento
+    bajo = {}   # el menor tiempo alcanzable
+    padre = {}  # padre en el DFS
+    puentes = []
+    articulaciones = set()
+
+    def dfs(u):
+        nonlocal tiempo
+        visitado.add(u)
+        tiempo += 1
+        disc[u] = bajo[u] = tiempo
+        hijos = 0  # solo para raíz del DFS
+
+        for v in g[u]:
+            # Caso 1: si el vecino no está visitado → árbol DFS
+            if v not in visitado:
+                padre[v] = u
+                hijos += 1
+                dfs(v)
+
+                # Actualizar bajo[u]
+                bajo[u] = min(bajo[u], bajo[v])
+
+                # Regla 1: Puente
+                if bajo[v] > disc[u]:
+                    puentes.append((u, v))
+
+                # Regla 2: Articulación (no raíz)
+                if padre.get(u) is not None and bajo[v] >= disc[u]:
+                    articulaciones.add(u)
+
+            # Caso 2: Arista de retroceso
+            elif v != padre.get(u):
+                bajo[u] = min(bajo[u], disc[v])
+
+        # Regla 3: Articulación raíz (más de un hijo)
+        if padre.get(u) is None and hijos > 1:
+            articulaciones.add(u)
+
+    # Lanzar DFS desde cada componente si es desconectado
+    for nodo in g.keys():
+        if nodo not in visitado:
+            dfs(nodo)
+
+    # Ordenar resultados para output estable
+    puentes = sorted(puentes)
+    articulaciones = sorted(list(articulaciones))
+
+    return puentes, articulaciones
