@@ -1,0 +1,46 @@
+ERROR: comando desconocido -> # Ejemplo de consultas para grafos pequeños
+
+ERROR: comando desconocido -> # Red eléctrica
+
+============================================================
+COMPONENTES CONEXOS - RED ELÉCTRICA
+============================================================
+Componente 1 (5 nodos):
+  Belgrano, Nunez, Palermo, Recoleta, Retiro
+Componente 2 (4 nodos):
+  Almagro, Boedo, Caballito, Flores
+
+============================================================
+ORDEN DE FALLOS - RED ELÉCTRICA
+============================================================
+Nodos ordenados por criticidad (menor grado = más crítico):
+
+Grado 1 (2 nodos):
+  Nunez, Retiro
+
+Grado 2 (7 nodos):
+  Almagro, Belgrano, Boedo, Caballito, Flores, Palermo, Recoleta
+
+
+ERROR: comando desconocido -> # Red de transporte
+
+------------------------------------------------------------
+CAMINO MÍNIMO: Palermo → Retiro
+------------------------------------------------------------
+Distancia total: 8.0 minutos
+Ruta: Palermo → Recoleta → Retiro
+
+------------------------------------------------------------
+CAMINO MÍNIMO: Boedo → Flores
+------------------------------------------------------------
+Distancia total: 9.0 minutos
+Ruta: Boedo → Almagro → Flores
+
+ERROR: comando desconocido -> CAMINO_MINIMO_SIMULAR_CORTE {Recoleta} Palermo Retiro
+
+ERROR: comando desconocido -> # Red de aguas
+
+ERROR: comando desconocido -> PLANTAS_ASIGNADAS Nunez Flores
+
+ERROR: consulta incompleta → PUENTES_Y_ARTICULACIONES
+

@@ -1,13 +1,13 @@
 graph {
-  label="Red ElÃ©ctrica";
+  label="Red Eléctrica";
   node [shape=circle];
 
+  Almagro -- Boedo;
   Almagro -- Flores;
+  Belgrano -- Palermo;
   Belgrano -- Nunez;
-  Boedo -- Almagro;
   Boedo -- Caballito;
   Caballito -- Flores;
   Palermo -- Recoleta;
-  Palermo -- Belgrano;
   Recoleta -- Retiro;
 }
