@@ -105,7 +105,6 @@ def process_queries(queries_file, output_file, electric_graph, road_graph, water
         for line in qf:
             line = line.strip()
 
-            # ignorar comentarios y líneas vacías
             if not line or line.startswith("#"):
                 continue
 
@@ -163,7 +162,6 @@ def process_queries(queries_file, output_file, electric_graph, road_graph, water
             elif comando == "CAMINO_RECOLECCION_BASURA":
                 g = road_graph
 
-                # DFS ordenado lexicográficamente
                 visit = set()
                 camino = []
 
@@ -175,7 +173,7 @@ def process_queries(queries_file, output_file, electric_graph, road_graph, water
                         if v not in visit:
                             dfs(v)
 
-                start = sorted(g.keys())[0]   # primer barrio alfabético
+                start = sorted(g.keys())[0]   
                 dfs(start)
 
                 out.write(format_ruta_recoleccion(camino))
@@ -192,14 +190,12 @@ def process_queries(queries_file, output_file, electric_graph, road_graph, water
                 dist = {n: float("inf") for n in g}
                 asign = {}
                 q = deque()
-
-                # inicializar BFS con múltiples plantas
+                
                 for p in plantas:
                     dist[p] = 0
                     asign[p] = p
                     q.append(p)
 
-                # BFS expandiendo por capas
                 while q:
                     u = q.popleft()
                     for v in g[u]:
@@ -219,10 +215,8 @@ def process_queries(queries_file, output_file, electric_graph, road_graph, water
             elif comando == "PUENTES_Y_ARTICULACIONES":
                 g = water_graph
 
-                # tarjan devuelve → (puentes, articulaciones)
                 puentes, articulaciones = tarjan(g)
 
-                # formatter espera → (articulaciones, puentes)
                 out.write(format_puentes_y_articulaciones(articulaciones, puentes))
                 out.write("\n")
 
