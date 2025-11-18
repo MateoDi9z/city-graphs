@@ -1,7 +1,3 @@
-ERROR: comando desconocido -> # Ejemplo de consultas para grafos pequeños
-
-ERROR: comando desconocido -> # Red eléctrica
-
 ============================================================
 COMPONENTES CONEXOS - RED ELÉCTRICA
 ============================================================
@@ -22,8 +18,6 @@ Grado 2 (7 nodos):
   Almagro, Belgrano, Boedo, Caballito, Flores, Palermo, Recoleta
 
 
-ERROR: comando desconocido -> # Red de transporte
-
 ------------------------------------------------------------
 CAMINO MÍNIMO: Palermo → Retiro
 ------------------------------------------------------------
@@ -36,11 +30,38 @@ CAMINO MÍNIMO: Boedo → Flores
 Distancia total: 9.0 minutos
 Ruta: Boedo → Almagro → Flores
 
-ERROR: comando desconocido -> CAMINO_MINIMO_SIMULAR_CORTE {Recoleta} Palermo Retiro
+------------------------------------------------------------
+SIMULACIÓN DE CORTE: Palermo → Retiro
+Nodos cortados: Recoleta
+------------------------------------------------------------
+Resultado: NO HAY RUTA ALTERNATIVA
 
-ERROR: comando desconocido -> # Red de aguas
+============================================================
+PLANTAS DE AGUA ASIGNADAS POR BARRIO
+============================================================
+Plantas disponibles: Flores, Nunez
 
-ERROR: comando desconocido -> PLANTAS_ASIGNADAS Nunez Flores
+Planta Flores (4 barrios):
+  Almagro, Boedo, Caballito, Flores
 
-ERROR: consulta incompleta → PUENTES_Y_ARTICULACIONES
+Planta Nunez (5 barrios):
+  Belgrano, Nunez, Palermo, Recoleta, Retiro
+
+
+============================================================
+PUNTOS CRÍTICOS - RED HÍDRICA
+============================================================
+
+ARTICULACIONES (3 nodos críticos):
+(Nodos cuya eliminación desconecta el grafo)
+
+  Belgrano, Palermo, Recoleta
+
+PUENTES (4 aristas críticas):
+(Aristas cuya eliminación desconecta el grafo)
+
+  • Belgrano ↔ Nunez
+  • Palermo ↔ Belgrano
+  • Palermo ↔ Recoleta
+  • Recoleta ↔ Retiro
 
